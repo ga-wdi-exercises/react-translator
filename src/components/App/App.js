@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import SearchContainer from '../SearchContainer/SearchContainer.js'
-
+import Results from '../Results/Results.js'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+} from 'react-router-dom'
 
 class App extends Component {
   constructor() {
@@ -58,17 +63,39 @@ class App extends Component {
 
   render() {
     return(
-      <div>
-        <h1>React Translator</h1>
-        <SearchContainer
-          onSearchInput={(e) => this.handleSearchInput(e)}
-          langOptions={this.state.langOptions}
-          setSourceLang={(e) => this.setSourceLang(e)}
-          setTargetLang={(e) => this.setTargetLang(e)}
-          onSearchSubmit={(e) => this.handleSearchSubmit(e)}
-          translation={this.state.translation}
-        />
-      </div>
+      <Router>
+        <div>
+          <nav>
+            <Link to="/search">Search</Link>
+            <Link to="/results">Results</Link>
+          </nav>
+          <main>
+            <Route
+              path="/search"
+              render={() => {
+                return(
+                  <SearchContainer
+                    onSearchInput={(e) => this.handleSearchInput(e)}
+                    langOptions={this.state.langOptions}
+                    setSourceLang={(e) => this.setSourceLang(e)}
+                    setTargetLang={(e) => this.setTargetLang(e)}
+                    onSearchSubmit={(e) => this.handleSearchSubmit(e)}
+                    translation={this.state.translation}
+                  />
+                )
+              }}
+            />
+            <Route
+              path="/results"
+              render={() => {
+                return(
+                  <Results translation={this.state.translation}/>
+                )
+              }}
+            />
+          </main>
+        </div>
+      </Router>
     )
   }
 }
