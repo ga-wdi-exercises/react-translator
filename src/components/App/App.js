@@ -6,6 +6,7 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
+  Redirect
 } from 'react-router-dom'
 
 class App extends Component {
@@ -24,7 +25,8 @@ class App extends Component {
       ],
       sourceLang: null,
       targetLang: null,
-      translation: null
+      translation: null,
+      hasSearched: false
     }
   }
 
@@ -46,6 +48,12 @@ class App extends Component {
     })
   }
 
+  clearSearch() {
+    this.setState({
+      hasSearched: false
+    })
+  }
+
   handleSearchSubmit(e) {
     e.preventDefault()
     axios.get('https://watson-api-explorer.mybluemix.net/language-translator/api/v2/translate', {
@@ -56,7 +64,8 @@ class App extends Component {
       }
     }).then((response) => {
       this.setState({
-        translation: response.data
+        translation: response.data,
+        hasSearched: true
       })
     })
   }
@@ -73,6 +82,9 @@ class App extends Component {
             <Route
               path="/search"
               render={() => {
+                if(this.state.hasSearched) {
+                  return <Redirect to="/results" />
+                }
                 return(
                   <SearchContainer
                     onSearchInput={(e) => this.handleSearchInput(e)}
@@ -89,7 +101,10 @@ class App extends Component {
               path="/results"
               render={() => {
                 return(
-                  <Results translation={this.state.translation}/>
+                  <Results
+                    translation={this.state.translation}
+                    clearSearch={() => this.clearSearch()}
+                  />
                 )
               }}
             />

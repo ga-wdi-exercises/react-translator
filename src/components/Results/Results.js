@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 
 class Results extends Component {
+  componentDidMount() {
+    this.props.clearSearch()
+  }
   render() {
     return(
       <div>
