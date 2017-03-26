@@ -29,7 +29,6 @@ class SearchContainer extends Component {
           </p>
           <input type="submit" value="Translate"/>
         </form>
-        <h2>{this.props.translation}</h2>
       </div>
     )
   }

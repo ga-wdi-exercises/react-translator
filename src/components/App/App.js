@@ -92,7 +92,6 @@ class App extends Component {
                     setSourceLang={(e) => this.setSourceLang(e)}
                     setTargetLang={(e) => this.setTargetLang(e)}
                     onSearchSubmit={(e) => this.handleSearchSubmit(e)}
-                    translation={this.state.translation}
                   />
                 )
               }}
