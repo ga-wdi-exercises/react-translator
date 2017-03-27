@@ -19,7 +19,6 @@ class Results extends Component {
   getVoiceOptions() {
     axios.get('https://watson-api-explorer.mybluemix.net/text-to-speech/api/v1/voices')
       .then((response) => {
-        console.log(response)
         this.setState({
           voiceOptions: response.data.voices
         })
@@ -28,8 +27,6 @@ class Results extends Component {
   setVoice(e) {
     this.setState({
       selectedVoice: e.target.value
-    }, () => {
-      console.log(this.state.selectedVoice)
     })
   }
 
@@ -41,7 +38,6 @@ class Results extends Component {
       }
     })
     .then((response) => {
-      console.log(response)
       this.setState({
         textPronunciation: response.data.pronunciation
       })
