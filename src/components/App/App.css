@@ -33,7 +33,8 @@ nav a:hover {
 }
 
 main {
-  width: 1000px;
+  width: 100%;
+  max-width: 900px;
   margin: auto;
   background: #DDDDDD;
   height: 100%;
