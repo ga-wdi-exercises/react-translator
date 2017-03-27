@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './SearchContainer.css'
 
 class SearchContainer extends Component {
   render() {
@@ -14,7 +15,10 @@ class SearchContainer extends Component {
       <div>
         <form onSubmit={(e) => this.props.onSearchSubmit(e)}>
           <p>Please enter text to be translated and the source and target languages</p>
-          <p><input type="text" onChange={(e) => this.props.onSearchInput(e)}/></p>
+          <p>
+            <label>Text: </label>
+            <textarea onChange={(e) => this.props.onSearchInput(e)}></textarea>
+          </p>
           <p>
             <label>From: </label>
             <select onChange={(e) => this.props.setSourceLang(e)}>
