@@ -74,7 +74,7 @@ class Results extends Component {
         <h3>Translation: </h3>
         <p>{this.state.translation}</p>
 
-        <h3>Get Pronunciation</h3>
+        <h3>Pronunciation:</h3>
         <form onSubmit={(e) => this.getPronunciations(e)} >
           <p>Choose Voice</p>
           <select onChange={(e) => this.setVoice(e)}>
