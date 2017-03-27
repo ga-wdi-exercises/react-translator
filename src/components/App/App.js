@@ -8,6 +8,7 @@ import {
   Link,
   Redirect
 } from 'react-router-dom'
+import './App.css'
 
 class App extends Component {
   constructor() {
@@ -75,8 +76,11 @@ class App extends Component {
       <Router>
         <div>
           <nav>
-            <Link to="/search">Search</Link>
-            <Link to="/results">Results</Link>
+            <h1>React Translator</h1>
+            <div>
+              <Link to="/search">Search</Link>
+              <Link to="/results">Results</Link>
+            </div>
           </nav>
           <main>
             <Route
