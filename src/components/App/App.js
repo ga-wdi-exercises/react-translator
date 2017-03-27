@@ -111,6 +111,12 @@ class App extends Component {
                 )
               }}
             />
+            <Route
+              path="/*"
+              render={() => {
+                return <Redirect to="/search" />
+              }}
+            />
           </main>
         </div>
       </Router>
