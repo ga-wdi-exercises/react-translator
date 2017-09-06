@@ -49,7 +49,8 @@ class Search extends Component {
       }
     })
     .then((response) => {
-      this.props.setTranslation(response.data.translations[0].translation)
+      this.props.setTranslation(response.data.translations[0].translation, this.state.targetLang)
+      this.props.history.push('/results')
     })
     .catch((err) => {
       console.log(err)
@@ -87,7 +88,6 @@ class Search extends Component {
           </p>
           <input type="submit" value="Translate"/>
         </form>
-        <h2>{this.props.translation}</h2>
       </div>
     )
   }
