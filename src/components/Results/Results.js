@@ -11,6 +11,19 @@ class Results extends Component {
     }
   }
 
+  saveTranslation () {
+    axios.post('http://localhost:3001/api/translations', {
+      text: this.props.translation,
+      audioSource: this.state.voiceAudioSource
+    })
+    .then(() => {
+      this.props.history.push('/translations')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+
   componentDidMount () {
     if (!this.props.translation) {
       this.props.history.push('/search')
@@ -36,12 +49,13 @@ class Results extends Component {
         <source type="audio/ogg" src={this.state.voiceAudioSource}/>
       </audio> :
       null
-      
+
     return (
       <div>
         <h3>Translation</h3>
         <p>{ this.props.translation }</p>
         { audio }
+        <button onClick={() => this.saveTranslation()}>Save Translation</button>
       </div>
     )
   }

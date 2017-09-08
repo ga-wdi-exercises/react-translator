@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 import Search from '../Search/Search.js'
 import Results from '../Results/Results.js'
+import Translations from '../Translations/Translations.js'
 import './App.css'
 
 class App extends Component {
@@ -34,6 +35,7 @@ class App extends Component {
             <h1>React Translator</h1>
             <Link to="/search">Search</Link>
             <Link to="/results">Results</Link>
+            <Link to="/translations">Saved Translations</Link>
           </nav>
           <main>
             <Switch>
@@ -59,6 +61,10 @@ class App extends Component {
                     />
                   )
                 }}
+              />
+              <Route
+                path="/translations"
+                component={ Translations }
               />
               <Route
                 path="/*"
